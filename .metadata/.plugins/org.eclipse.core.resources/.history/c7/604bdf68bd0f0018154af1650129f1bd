@@ -1,0 +1,12 @@
+package com.simple.example;
+
+public class KafkaProducerExample {
+
+	private static final String topic = "my-first-topic";
+	private final static String BOOTSTRAP_SERVERS = "localhost:9092,localhost:9093,localhost:9094";
+
+	private static Producer<Long, String> createProducer() {
+
+	}
+
+}

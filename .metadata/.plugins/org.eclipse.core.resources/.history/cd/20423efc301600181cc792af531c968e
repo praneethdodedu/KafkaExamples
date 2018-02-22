@@ -1,0 +1,21 @@
+package com.aggregator.news.constants;
+
+public enum NewsCategory {
+
+	TECHNOLOGY("technology:tech:IT industry:science:Smartphone:COMPUTER:footballe"), 
+	HEALTHCARE("health:hospital:medication:meditation"), 
+	ENTERTAINMENT("entertainment:films:music:movies"), 
+	BUSINESS("business:stocks:share market"), 
+	SPORTS("sports:games:commonwealth:worldcup");
+
+	private String category;
+
+	NewsCategory(String category) {
+		this.category = category;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+}

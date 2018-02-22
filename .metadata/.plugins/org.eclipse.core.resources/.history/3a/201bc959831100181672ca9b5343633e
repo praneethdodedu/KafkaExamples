@@ -1,0 +1,9 @@
+package com.kafka.praneeth.model;
+
+public class Car {
+
+	private String make;
+	private String manufacturer;
+	private String id;
+
+}

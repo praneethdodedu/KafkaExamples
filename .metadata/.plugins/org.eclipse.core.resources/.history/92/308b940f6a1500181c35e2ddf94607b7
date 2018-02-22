@@ -1,0 +1,10 @@
+package com.aggregator.news.constants;
+
+public enum NewsCategory {
+	
+	TECHNOLOGY("");
+	
+	
+	private String 
+
+}

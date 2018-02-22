@@ -1,0 +1,4 @@
+GitRepositoriesView.GitDirectories=/home/praneeth/Projects/Learning-Projects/Kafka/KafkaAPIClient/.git\:/home/praneeth/Practise/Kafka/spring-integration-kafka/.git\:/home/praneeth/Practise/Kafka/kafka-streams/.git\:/home/praneeth/Practise/Kafka/sample-spring-kafka-producer-consumer/.git\:
+GitRepositoriesView.GitDirectories.relative=/home/praneeth/Projects/Learning-Projects/Kafka/KafkaAPIClient/.git\:spring-integration-kafka/.git\:kafka-streams/.git\:sample-spring-kafka-producer-consumer/.git\:
+core_autoIgnoreDerivedResources=false
+eclipse.preferences.version=1

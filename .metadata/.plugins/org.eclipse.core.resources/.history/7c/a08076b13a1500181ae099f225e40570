@@ -1,0 +1,16 @@
+package com.aggregator.news.serdes;
+
+import org.apache.kafka.common.serialization.Deserializer;
+
+import com.google.gson.Gson;
+
+public class JsonDeserializer<T> implements Deserializer<T> {
+
+	private Gson gson = new Gson();
+	private Class<T> deserializedClass;
+
+	public JsonDeserializer(Class<T> deserializedClass) {
+		this.deserializedClass = deserializedClass;
+	}
+
+}

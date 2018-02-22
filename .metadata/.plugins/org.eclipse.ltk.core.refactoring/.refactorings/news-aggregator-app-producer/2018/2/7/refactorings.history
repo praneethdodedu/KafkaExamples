@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;News.java&apos; to &apos;news-aggregator-app-stream/src/main/java/com.aggregator.news&apos;&#x0A;- Original project: &apos;news-aggregator-app-producer&apos;&#x0A;- Destination element: &apos;news-aggregator-app-stream/src/main/java/com.aggregator.news&apos;&#x0A;- Original element: &apos;com.aggregator.news.client.model.News.java&apos;" description="Copy compilation unit" destination="=news-aggregator-app-stream/src\/main\/java&lt;com.aggregator.news" element1="/src\/main\/java&lt;com.aggregator.news.client.model{News.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1518782357868" units="1" version="1.0"/>
+</session>

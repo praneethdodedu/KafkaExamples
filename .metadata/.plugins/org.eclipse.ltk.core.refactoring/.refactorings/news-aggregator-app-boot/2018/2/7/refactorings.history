@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;com.aggregator.news.client.NewAggregator&apos; to &apos;NewsAggregator&apos;&#x0A;- Original project: &apos;news-aggregator-app-boot&apos;&#x0A;- Original element: &apos;com.aggregator.news.client.NewAggregator&apos;&#x0A;- Renamed element: &apos;com.aggregator.news.client.NewsAggregator&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;NewAggregator&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;com.aggregator.news.client{NewAggregator.java[NewAggregator" matchStrategy="1" name="NewsAggregator" qualified="false" references="true" similarDeclarations="false" stamp="1518773919848" textual="false" version="1.0"/>
+</session>

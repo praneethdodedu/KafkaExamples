@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<aop-reference-model>
+<aop-project name="news-aggregator-app-consumer"/>
+<aop-project name="Spring-Boot-Kafka-Project"/>
+<aop-project name="news-aggregator-app-producer"/>
+<aop-project name="news-aggregator-app-stream"/>
+</aop-reference-model>

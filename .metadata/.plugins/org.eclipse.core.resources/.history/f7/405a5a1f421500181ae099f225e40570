@@ -1,0 +1,49 @@
+package com.aggregator.news.serdes;
+
+import java.util.Map;
+
+import org.apache.kafka.common.serialization.Deserializer;
+
+import com.aggregator.news.model.News;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
+
+public class JsonDeserializer<T> implements Deserializer<T> {
+
+	private Gson gson = new Gson();
+	private Class<T> deserializedClass;
+
+	public JsonDeserializer(Class<T> deserializedClass) {
+		this.deserializedClass = deserializedClass;
+	}
+
+	public JsonDeserializer() {
+	}
+
+	@Override
+	@SuppressWarnings("unchecked")
+	public void configure(Map<String, ?> configs, boolean isKey) {
+		if (deserializedClass == null) {
+			deserializedClass = (Class<T>) configs.get("serializedClass");
+		}
+	}
+
+	@Override
+	public News deserialize(String topic, byte[] data) {
+		ObjectMapper mapper = new ObjectMapper();
+		News news = null;
+		try {
+			news = mapper.readValue(data, News.class);
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
+		return news;
+	}
+
+	@Override
+	public void close() {
+
+	}
+
+}

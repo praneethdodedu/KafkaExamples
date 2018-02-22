@@ -1,0 +1,37 @@
+package com.aggregator.news.stream;
+
+import java.util.Properties;
+
+import org.apache.kafka.clients.producer.Callback;
+import org.apache.kafka.clients.producer.KafkaProducer;
+import org.apache.kafka.clients.producer.Producer;
+import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
+import org.apache.kafka.common.serialization.ByteArraySerializer;
+import org.springframework.kafka.support.serializer.JsonSerializer;
+
+import com.aggregator.news.model.News;
+
+public class NewsCategoryProducer {
+
+	public void produce(String topicName, News news) {
+
+		// Configure the Producer
+		Properties configProperties = new Properties();
+		configProperties.put("bootstrap.servers", "localhost:9092");
+		configProperties.put("key.serializer", ByteArraySerializer.class);
+		configProperties.put("value.serializer", JsonSerializer.class);
+
+		Producer<String, String> producer = new KafkaProducer<String, String>(configProperties);
+		ProducerRecord<String, String> rec = new ProducerRecord<String, String>(topicName, null, news);
+		producer.send(rec, new Callback() {
+			public void onCompletion(RecordMetadata metadata, Exception exception) {
+				System.out.println(
+						"Message sent to topic ->" + metadata.topic() + " stored at offset->" + metadata.offset());
+			}
+		});
+		producer.close();
+
+	}
+
+}

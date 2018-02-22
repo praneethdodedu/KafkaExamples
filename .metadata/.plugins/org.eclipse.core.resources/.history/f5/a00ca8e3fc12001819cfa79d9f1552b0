@@ -1,0 +1,18 @@
+package com.aggregator.news;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
+
+import com.aggregator.news.client.NewAggregator;
+import com.aggregator.news.client.model.NewsApiResponse;
+
+@SpringBootApplication
+public class NewsAggregatorAppApplication {
+
+	public static void main(String[] args) {
+		ConfigurableApplicationContext context = SpringApplication.run(NewsAggregatorAppApplication.class, args);
+		NewsApiResponse apiResponse = new NewAggregator().getAllNews();
+		apiResponse.getArticles().forEach(article -> System.out.println(article.getUrl()));
+	}
+}

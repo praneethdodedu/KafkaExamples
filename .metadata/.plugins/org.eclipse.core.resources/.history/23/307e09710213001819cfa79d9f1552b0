@@ -1,0 +1,2 @@
+news.api.url = https://newsapi.org/v2/everything?q=news&sortBy=publishedAt&apiKey=73fe9461d8224719a914674c04ccac5e
+all.news.topic = all-news-topic

@@ -1,0 +1,5 @@
+package com.aggregator.news.stream;
+
+public class NewsCategoryProducer {
+
+}

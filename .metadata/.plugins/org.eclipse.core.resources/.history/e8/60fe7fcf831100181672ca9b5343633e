@@ -1,0 +1,12 @@
+package com.kafka.praneeth.producer;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Configuration;
+
+@Configuration
+public class SenderConfig {
+	
+	@Value("${kafka.bootstrap-servers}")
+	private String bootstrapServers;
+
+}

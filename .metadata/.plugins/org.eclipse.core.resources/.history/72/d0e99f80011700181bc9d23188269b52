@@ -1,0 +1,5 @@
+kafka.bootstrap-servers=localhost:9092
+technology.news.topic=technology-news-topic
+business.news.topic=business-news-topic
+server.port=8081
+logging.pattern.console=

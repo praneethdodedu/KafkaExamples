@@ -1,0 +1,5 @@
+package com.aggregator.news.model;
+
+public class News {
+
+}

@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+/home/praneeth/Practise/Kafka/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
+1011130719.index
+2554591112.index
+3167217131.index
+327304740.index
+810760557.index
+405449173.index

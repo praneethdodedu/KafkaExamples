@@ -1,0 +1,24 @@
+package com.aggregator.news.client;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.client.RestTemplate;
+
+import com.aggregator.news.client.model.NewsApiResponse;
+
+public class NewAggregator {
+	
+	@Value("")
+	public String newsApiUrl; 
+
+	@Autowired
+	private RestTemplate restTemplate;
+
+	public List<String> getAllNews() {
+		NewsApiResponse newsApiResponse = restTemplate.getForObject("", NewsApiResponse.class);
+		return null;
+	}
+
+}

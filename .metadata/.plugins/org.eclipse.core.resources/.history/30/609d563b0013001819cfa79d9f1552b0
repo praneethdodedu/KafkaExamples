@@ -1,0 +1,39 @@
+package com.aggregator.news.producer;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.StringSerializer;
+import org.codehaus.jackson.map.JsonSerializer;
+import org.springframework.kafka.core.DefaultKafkaProducerFactory;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.core.ProducerFactory;
+
+import com.aggregator.news.client.model.News;
+
+public class NewsProducerConfig {
+
+	private String bootstrapServers = "localhost:9092";
+
+	public Map<String, Object> producerConfigs() {
+		Map<String, Object> props = new HashMap<>();
+		props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
+		props.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, StringSerializer.class);
+		props.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, JsonSerializer.class);
+		return props;
+	}
+
+	public ProducerFactory<String, News> producerFactory() {
+		return new DefaultKafkaProducerFactory<>(producerConfigs());
+	}
+
+	public KafkaTemplate<String, News> kafkaTemplate() {
+		return new KafkaTemplate<>(producerFactory());
+	}
+
+	public NewsProducer sender() {
+		return new NewsProducer();
+	}
+
+}

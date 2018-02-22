@@ -1,0 +1,5 @@
+package com.aggregator.news.consumer;
+
+public class NewsConsumer {
+
+}

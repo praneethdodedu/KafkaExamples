@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 2 elements to &apos;MyFirstKafkaApplication/src/com.kafka.praneeth&apos;&#x0A;- Original project: &apos;MyKafkaProject-1&apos;&#x0A;- Destination element: &apos;MyFirstKafkaApplication/src/com.kafka.praneeth&apos;&#x0A;- Original elements:&#x0A;     com.kafka.praneeth.MyProducer0.java&#x0A;     com.kafka.praneeth.MyConsumer.java" description="Copy compilation units" destination="=MyFirstKafkaApplication/src&lt;com.kafka.praneeth" element1="/src\/main\/java&lt;com.kafka.praneeth{MyProducer0.java" element2="/src\/main\/java&lt;com.kafka.praneeth{MyConsumer.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1518093568370" units="2" version="1.0"/>
+</session>

@@ -1,0 +1,91 @@
+package com.aggregator.news.stream;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.kafka.common.serialization.Serdes;
+import org.apache.kafka.streams.KafkaStreams;
+import org.apache.kafka.streams.StreamsBuilder;
+import org.apache.kafka.streams.StreamsConfig;
+import org.apache.kafka.streams.kstream.ForeachAction;
+import org.apache.kafka.streams.kstream.KStream;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.aggregator.news.constants.NewsCategory;
+import com.aggregator.news.model.News;
+import com.aggregator.news.producer.NewsCategoryProducer;
+import com.aggregator.news.serdes.NewsSerdes;
+
+@Component
+public class NewsAggregatorStream {
+
+	@Autowired
+	NewsCategoryProducer categoryProducer;
+
+	public void streamToTopic() {
+
+		Properties config = new Properties();
+		config.put(StreamsConfig.APPLICATION_ID_CONFIG, "news-aggregator-application");
+		config.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+		config.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+		config.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, NewsSerdes.class);
+
+		StreamsBuilder builder = new StreamsBuilder();
+		KStream<String, News> newsList = builder.stream("all-news-topic");
+
+		newsList.foreach(new ForeachAction<String, News>() {
+
+			@Override
+			public void apply(String arg0, News news) {
+				try {
+					if (searchKey(NewsCategory.TECHNOLOGY, news)) {
+						categoryProducer.produce("technology-news-topic", news);
+					} else if (searchKey(NewsCategory.BUSINESS, news)) {
+						categoryProducer.produce("business-news-topic", news);
+					} else if (searchKey(NewsCategory.ENTERTAINMENT, news)) {
+						categoryProducer.produce("entertainment-news-topic", news);
+					} else if (searchKey(NewsCategory.HEALTHCARE, news)) {
+						categoryProducer.produce("healthcare-news-topic", news);
+					} else if (searchKey(NewsCategory.SPORTS, news)) {
+						categoryProducer.produce("sports-news-topic", news);
+					} else if (searchKey(NewsCategory.POLITICS, news)) {
+						categoryProducer.produce("political-news-topic", news);
+					} else if (searchKey(NewsCategory.INDIA, news)) {
+						categoryProducer.produce("india-news-topic", news);
+					} else if (searchKey(NewsCategory.WORLD, news)) {
+						categoryProducer.produce("world-news-topic", news);
+					} else {
+						categoryProducer.produce("other-news-topic", news);
+					}
+				} catch (Exception exception) {
+					exception.printStackTrace();
+				}
+			}
+		});
+
+		KafkaStreams kafkaStreams = new KafkaStreams(builder.build(), config);
+		kafkaStreams.start();
+	}
+
+	private boolean searchKey(NewsCategory NewsCategory, News news) {
+		boolean isFound = false;
+		System.out.println(NewsCategory.values().length);
+		for (NewsCategory category : NewsCategory.values()) {
+			categoryProducer.produce(category.name() + "other-news-topic", news);
+		}
+		List<String> newsCategory = Arrays.asList(NewsCategory.getCategory().split(":"));
+		for (String searchKey : newsCategory) {
+			if ((StringUtils.isNotEmpty(news.getTitle())
+					&& news.getTitle().toLowerCase().contains(searchKey.toLowerCase()))
+					|| (StringUtils.isNotEmpty(news.getDescription())
+							&& news.getDescription().toLowerCase().contains(searchKey.toLowerCase()))) {
+				isFound = true;
+			}
+		}
+		return isFound;
+	}
+
+}

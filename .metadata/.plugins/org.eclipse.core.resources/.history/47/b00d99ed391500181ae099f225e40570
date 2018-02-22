@@ -1,0 +1,5 @@
+package com.aggregator.news.serdes;
+
+public class JsonSerializer {
+
+}

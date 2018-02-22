@@ -1,0 +1,18 @@
+package com.aggregator.news.serdes;
+
+import java.util.Map;
+
+import org.apache.kafka.common.serialization.Serializer;
+
+import com.google.gson.Gson;
+
+public class JsonSerializer implements Serializer<T> {
+	
+	private Gson gson = new Gson();
+	
+	@Override
+	public void configure(Map<String, ?> configs, boolean isKey) {
+		
+	}
+
+}

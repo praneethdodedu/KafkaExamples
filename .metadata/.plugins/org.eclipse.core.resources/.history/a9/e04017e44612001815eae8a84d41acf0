@@ -1,0 +1,13 @@
+package com.aggregator.news.client.model;
+
+import java.util.List;
+
+import lombok.Data;
+
+public @Data class NewsApiResponse {
+
+	private String status;
+	private Long totalResults;
+	private List<Source> sources;
+
+}

@@ -1,0 +1,24 @@
+package com.aggregator.news.constants;
+
+public enum NewsCategory {
+
+	TECHNOLOGY("technology:tech:it industry:science:smartphone:computer:CEO:Android:iOS:Qualcomm"), 
+	HEALTHCARE("health:hospital:medication:meditation:pharmacy:blood sugar"), 
+	ENTERTAINMENT("entertainment:films:music:movies"), 
+	BUSINESS("business:stocks:share market"), 
+	SPORTS("sports:games:commonwealth:worldcup:Basketball:cricket:football:training"),
+	POLITICS("election:Trump:Israel:Political:Politics"),
+	INDIA("indian:india:Tegulu:tamil:kannada:hindi:NEW DELHI:ESPN"),
+	WORLD("america:usa:north korea:south korea:Russia:Israel:Syrian");
+
+	private String category;
+
+	NewsCategory(String category) {
+		this.category = category;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+}

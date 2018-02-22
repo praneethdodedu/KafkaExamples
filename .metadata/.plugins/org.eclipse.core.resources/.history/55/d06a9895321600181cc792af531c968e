@@ -1,0 +1,18 @@
+package com.aggregator.news.consumer;
+
+import javax.sound.midi.Receiver;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.annotation.KafkaListener;
+
+import com.aggregator.news.model.News;
+
+public class NewsConsumer {
+	private static final Logger LOGGER = LoggerFactory.getLogger(Receiver.class);
+
+	@KafkaListener(topics = "${kafka.topic.json}")
+	public void receive(News news) {
+		LOGGER.info("received news='{}'", news.toString());
+	}
+}

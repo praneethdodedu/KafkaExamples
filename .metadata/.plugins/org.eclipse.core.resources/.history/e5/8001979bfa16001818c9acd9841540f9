@@ -1,0 +1,34 @@
+package com.aggregator.news.serdes;
+
+import java.nio.charset.Charset;
+import java.util.Map;
+
+import org.apache.kafka.common.serialization.Serializer;
+
+import com.aggregator.news.model.News;
+import com.google.gson.Gson;
+
+public class JsonSerializer<T> implements Serializer<News> {
+
+	private static final Charset CHARSET = Charset.forName("UTF-8");
+	static private Gson gson = new Gson();
+
+	public JsonSerializer() {
+	}
+
+	@Override
+	public void configure(Map<String, ?> map, boolean b) {
+
+	}
+
+	@Override
+	public byte[] serialize(String topic, News news) {
+		return gson.toJson(news).getBytes(Charset.forName(CHARSET));
+	}
+
+	@Override
+	public void close() {
+
+	}
+
+}
